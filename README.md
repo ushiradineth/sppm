@@ -1,28 +1,25 @@
-# Create T3 App
+# AppName | SPPM - UOB Final Year | Group 3
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+This is a project created by Group 3 of the UOB February 2023 batch for the module Social and Professional Project Management.
+SPPM is an e-commerce website for a local furniture store or coffee shop. The website will allow users to browse through a catalogue of available products, order and track products as needed, and the shop owners can track the orders and sales as needed.
 
-## What's next? How do I make an app with this?
+## Technologies used
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+- NextJS
+- TypeScript
+- tRPC
+- AuthJS
+- Prisma
+- Tailwind CSS
+- Zod
+- Yup
+- React Hook Forms
+- PostgreSQL
+- UI Primitives by [Shadcn](https://ui.shadcn.com/)
+- [Jira](https://ushiradineth.atlassian.net/jira/software/projects/SPPM/boards/2)
+- [Confluence](https://ushiradineth.atlassian.net/wiki/spaces/SPPM/overview)
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+## Hosting
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
-
-## Learn More
-
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
-
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
-
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
-
-## How do I deploy this?
-
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+- Hosted on Vercel
+- Database and storage on Supabase
