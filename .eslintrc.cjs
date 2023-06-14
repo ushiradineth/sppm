@@ -21,15 +21,27 @@ const config = {
   plugins: ["@typescript-eslint"],
   extends: ["next/core-web-vitals", "plugin:@typescript-eslint/recommended"],
   rules: {
-    "@typescript-eslint/consistent-type-imports": [
+    "@typescript-eslint/no-misused-promises": ["warn", {
+      "checksVoidReturn": false
+    }],
+    "@next/next/no-html-link-for-pages": "off",
+    "@typescript-eslint/restrict-template-expressions": "off",
+    "@typescript-eslint/no-unused-vars": [
       "warn",
       {
-        prefer: "type-imports",
-        fixStyle: "inline-type-imports",
+        argsIgnorePattern: "^_",
+        varsIgnorePattern: "^_",
+        caughtErrorsIgnorePattern: "^_",
       },
     ],
-    "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
+    "@typescript-eslint/consistent-type-imports": [
+      "warn",
+      { prefer: "type-imports", fixStyle: "inline-type-imports" },
+    ],
   },
+  ignorePatterns: ["**/*.config.js", "**/*.config.cjs", "packages/config/**"],
+  reportUnusedDisableDirectives: true,
+
 };
 
 module.exports = config;
