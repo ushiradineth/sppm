@@ -10,7 +10,7 @@ const Home: NextPage = () => {
         <title>Welcome to SPPM</title>
       </Head>
       <main className="flex min-h-screen flex-col items-center justify-center bg-gray-950 text-white">
-        <p>Welcome to Coffee shop</p>
+        <p>Welcome to SPPM-1 edit</p>
       </main>
     </>
   );
