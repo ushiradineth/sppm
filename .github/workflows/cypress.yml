@@ -1,0 +1,24 @@
+name: "Run Cypress tests"
+on: [deployment_status]
+jobs:
+  e2e:
+    if: github.event.deployment_status.state == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - name: env
+        env:
+          ENV_FILE: ${{ secrets.ENV }}
+        run: |
+          echo $ENV_FILE | base64 --decode > .env
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Run Cypress
+        uses: cypress-io/github-action@v5
+        env:
+          CYPRESS_BASE_URL: ${{ github.event.deployment_status.target_url }}
+          CYPRESS_RETRIES: 1
+        with:
+          build: npm run build
+          start: npm start
