@@ -8,7 +8,8 @@
     "postinstall": "prisma generate",
     "lint": "SKIP_ENV_VALIDATION=1 next lint",
     "start": "next start",
-    "db:dev": "prisma studio"
+    "db:dev": "prisma studio",
+    "cypress": "cypress open"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.5",
@@ -37,6 +38,7 @@
     "@typescript-eslint/eslint-plugin": "^5.59.6",
     "@typescript-eslint/parser": "^5.59.6",
     "autoprefixer": "^10.4.14",
+    "cypress": "^12.17.0",
     "eslint": "^8.40.0",
     "eslint-config-next": "^13.4.2",
     "postcss": "^8.4.21",
