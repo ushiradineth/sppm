@@ -27,7 +27,7 @@ const config = {
     "@next/next/no-html-link-for-pages": "off",
     "@typescript-eslint/restrict-template-expressions": "off",
     "@typescript-eslint/no-unused-vars": [
-      "warn",
+      "error",
       {
         argsIgnorePattern: "^_",
         varsIgnorePattern: "^_",
@@ -35,7 +35,7 @@ const config = {
       },
     ],
     "@typescript-eslint/consistent-type-imports": [
-      "warn",
+      "error",
       { prefer: "type-imports", fixStyle: "inline-type-imports" },
     ],
   },
