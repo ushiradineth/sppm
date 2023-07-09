@@ -51,30 +51,47 @@ model User {
     image         String?
     admin         Boolean
     orders        Order[]
+    cart          Product[]
 
+    // cross relation rows
     accounts Account[]
     sessions Session[]
 }
 
 model Product {
+    id          String    @id @default(cuid())
+    createdAt   DateTime  @default(now())
+    name        String?
+    images      String[]
+    description String?
+    price       Float
+    stock       Int
+    Category    Category? @relation(fields: [categoryId], references: [id])
+
+    // cross relation rows
+    orders     Order[]
+    user       User[]
+    categoryId String?
+}
+
+model Category {
     id          String   @id @default(cuid())
     createdAt   DateTime @default(now())
     name        String?
     description String?
-    price       Float
-    stock       Int
 
     // cross relation rows
-    orders Order[]
+    products Product[]
 }
 
 model Order {
     id          String    @id @default(cuid())
-    user        User      @relation(fields: [userId], references: [id])
-    userId      String
     createdAt   DateTime  @default(now())
     completedAt DateTime?
+    user        User      @relation(fields: [userId], references: [id])
+    userId      String
     total       Float
-    products    Product[]
     status      String
+    products    Product[]
+    delivery    Boolean
 }
