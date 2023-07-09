@@ -32,7 +32,6 @@ const config = {
   importOrderParserPlugins: ["typescript", "jsx", "decorators-legacy"],
   importOrderMergeDuplicateImports: true,
   importOrderCombineTypeAndValueImports: true,
-
 };
 
 module.exports = config;
