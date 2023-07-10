@@ -35,6 +35,11 @@ export default {
       label: ["14px", "22px"],
       tiny: ["12px", "20px"],
     },
+    screens: {
+      mobile: "375px",
+      laptop: "768px",
+      desktop: "1024px",
+    },
   },
   plugins: [],
 } satisfies Config;
