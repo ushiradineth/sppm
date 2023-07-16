@@ -14,12 +14,24 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands'
-
+import "./commands";
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+import "@/styles/globals.css";
 
-import { mount } from 'cypress/react18'
+import { DM_Sans, Libre_Baskerville } from "@next/font/google";
+import { mount } from "cypress/react18";
+
+const dmsans = DM_Sans({
+  weight: ["700"],
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
+const libre = Libre_Baskerville({
+  weight: ["700"],
+  subsets: ["latin"],
+  variable: "--font-libre",
+});
 
 // Augment the Cypress namespace to include type definitions for
 // your custom command.
@@ -28,12 +40,27 @@ import { mount } from 'cypress/react18'
 declare global {
   namespace Cypress {
     interface Chainable {
-      mount: typeof mount
+      mount: typeof mount;
     }
   }
 }
 
-Cypress.Commands.add('mount', mount)
+Cypress.Commands.add("mount", (component, options) => {
+  const wrapped = (
+    <>
+      <style jsx global>
+        {`
+          :root {
+            --font-sans: ${dmsans.style.fontFamily};
+            --font-libre: ${libre.style.fontFamily};
+          }
+        `}
+      </style>
+      {component}
+    </>
+  );
+  return mount(wrapped, options);
+});
 
 // Example use:
 // cy.mount(<MyComponent />)
