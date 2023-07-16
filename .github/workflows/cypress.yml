@@ -2,6 +2,7 @@ name: "Run Cypress tests"
 on: [deployment_status]
 jobs:
   e2e:
+    environment: Preview
     if: github.event.deployment_status.state == 'success'
     runs-on: ubuntu-latest
     steps:
