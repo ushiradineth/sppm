@@ -2,7 +2,6 @@ name: "Run Cypress tests"
 on: [deployment_status]
 jobs:
   e2e:
-    environment: Preview
     if: github.event.deployment_status.state == 'success'
     runs-on: ubuntu-latest
     steps:
@@ -13,9 +12,6 @@ jobs:
         uses: cypress-io/github-action@v5
         env:
           BASE_URL: ${{ github.event.deployment_status.target_url }}
-          DATABASE_URL: ${{ env.DATABASE_URL }}
-          NEXTAUTH_URL: ${{ github.event.deployment_status.target_url }}
-          NEXTAUTH_SECRET: ${{ env.DATABASE_URL }}
         with:
-          build: npm run build
-          start: npm start
+          build: SKIP_ENV_VALIDATION=1 npm run build
+          start: SKIP_ENV_VALIDATION=1 npm start
