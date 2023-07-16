@@ -17,6 +17,7 @@ export default {
         primary: "#323232",
         secondary: "#969696",
         tertiary: "#D8D8D8",
+        test: "#123123",
       },
     },
     fontFamily: {
