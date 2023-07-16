@@ -12,6 +12,7 @@ jobs:
         uses: cypress-io/github-action@v5
         env:
           BASE_URL: ${{ github.event.deployment_status.target_url }}
+          SKIP_ENV_VALIDATION: 1
         with:
-          build: SKIP_ENV_VALIDATION=1 npm run build
-          start: SKIP_ENV_VALIDATION=1 npm start
+          build: npm run build
+          start: npm start
