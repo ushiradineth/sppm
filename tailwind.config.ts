@@ -15,7 +15,7 @@ export default {
         "peach-dark-2": "#E0CDBC",
         "peach-dark-3": "#CBB29C",
         primary: "#323232",
-        asdasd: "#969696",
+        secondary: "#969696",
         tertiary: "#D8D8D8",
       },
     },
