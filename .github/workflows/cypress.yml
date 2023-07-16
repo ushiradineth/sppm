@@ -10,7 +10,10 @@ jobs:
 
       - name: Run Cypress
         uses: cypress-io/github-action@v5
-        env: ${{ secrets.ENV }}
+        env:
+          DATABASE_URL: postgresql://postgres:sppmdbpassword!123@db.ksapkpyzblzmnusrhtxk.supabase.co:5432/postgres
+          NEXTAUTH_URL: http://localhost:3000
+          NEXTAUTH_SECRET: T4IAJQ6DaK3N/Kf2UM2lQs1kzTkNhXGzopAQZ8BjuBU=
         with:
           build: npm run build
           start: npm start
