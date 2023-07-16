@@ -9,7 +9,7 @@
     "lint": "SKIP_ENV_VALIDATION=1 next lint",
     "start": "next start",
     "db:dev": "prisma studio",
-    "cypress": "cypress open"
+    "cypress": "NODE_ENV=test cypress open"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.1.1",
