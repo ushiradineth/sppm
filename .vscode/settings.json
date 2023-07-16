@@ -13,8 +13,6 @@
   },
   "files.autoSave": "onFocusChange",
   "eslint.rules.customizations": [{ "rule": "*", "severity": "warn" }],
-  "eslint.workingDirectories": [{ "pattern": "apps/*/" }, { "pattern": "packages/*/" }],
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true,
-  "tailwindCSS.experimental.configFile": "./packages/config/tailwind/index.ts"
+  "eslint.workingDirectories": [{ "pattern": "src/*/" }],
+  "typescript.tsdk": "node_modules/typescript/lib"
 }
