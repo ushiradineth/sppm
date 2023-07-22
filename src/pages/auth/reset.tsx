@@ -21,7 +21,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-import icon from "../../../public/logo.svg";
+import icon from "../../../public/icon.png";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const session = await getSession({ ctx: context });
@@ -54,7 +54,7 @@ export default function Auth() {
         <title>Reset Password - The Brown Bean Coffee</title>
       </Head>
       <main className="flex flex-col items-center justify-center">
-        <Link href="/" className="absolute left-12 top-12 rounded-full border p-4 hover:bg-gray-800">
+        <Link href="/" className="absolute left-12 top-12 rounded-full border p-4 hover:bg-peach-dark-2">
           <Image src={icon} alt="Brand Logo" width={50} />
         </Link>
         {emailSent ? <ResetPassword email={email} /> : <SendEmail setEmail={setEmail} setEmailSent={setEmailSent} />}
