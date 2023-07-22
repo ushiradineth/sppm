@@ -5,7 +5,7 @@ export default function Document() {
     <Html>
       <Head>
         <meta name="description" content="SPPM by Group 3" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/icon.png" />
       </Head>
       <body>
         <Main />
