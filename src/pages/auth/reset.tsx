@@ -58,7 +58,7 @@ export default function Auth() {
           <Image src={icon} alt="Brand Logo" width={50} />
         </Link>
         {emailSent ? <ResetPassword email={email} /> : <SendEmail setEmail={setEmail} setEmailSent={setEmailSent} />}
-        <Card className="mt-2 w-full">
+        <Card className="mt-2 w-[90%] mobile:w-[300px] tablet:w-[400px]">
           <CardHeader>
             <CardDescription className="flex items-center justify-center gap-2">
               <Link href={"/auth"}>Found your password? Go back here.</Link>
@@ -99,7 +99,7 @@ function SendEmail({ setEmail, setEmailSent }: SendEmailProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className="w-[90%] mobile:w-[300px] tablet:w-[400px]">
       <Card>
         <CardHeader>
           <CardTitle>Reset your password</CardTitle>
@@ -143,7 +143,7 @@ function ResetPassword({ email }: ResetPasswordProps) {
   const onSubmit = (data: ResetPasswordFormData) => mutate({ email, password: data.Password, otp: data.OTP });
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className="w-[90%] mobile:w-[300px] tablet:w-[400px]">
       <Card>
         <CardHeader>
           <CardTitle>Confirm your Identity</CardTitle>

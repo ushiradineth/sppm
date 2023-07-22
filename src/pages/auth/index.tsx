@@ -58,7 +58,7 @@ export default function Auth() {
         <Link href="/" className="absolute left-12 top-12 rounded-full border p-4 hover:bg-peach-dark-2">
           <Image src={icon} alt="Brand Logo" width={50} />
         </Link>
-        <Tabs defaultValue={router.query.register ? "register" : "login"} className="w-[400px]">
+        <Tabs defaultValue={router.query.register ? "register" : "login"} className="w-[90%] mobile:w-[300px] tablet:w-[400px]">
           <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="login">Login</TabsTrigger>
             <TabsTrigger value="register">Registration</TabsTrigger>
@@ -66,7 +66,7 @@ export default function Auth() {
           <Login />
           <Registration />
         </Tabs>
-        <Card className="mt-2 w-full">
+        <Card className="mt-2 w-[90%] mobile:w-[300px] tablet:w-[400px]">
           <CardHeader>
             <CardDescription className="flex items-center justify-center gap-2">
               <Link href={"/auth/reset"} className="text-xs">
