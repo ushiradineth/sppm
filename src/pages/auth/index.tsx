@@ -55,7 +55,7 @@ export default function Auth() {
         <title>Authentication - The Brown Bean Coffee</title>
       </Head>
       <main className="flex h-screen flex-col items-center justify-center">
-        <Link href="/" className="absolute left-12 top-12 rounded-full border bg-peach-dark-2 p-4">
+        <Link href="/" className="absolute left-12 top-12 rounded-full border p-4 hover:bg-peach-dark-2">
           <Image src={icon} alt="Brand Logo" width={50} />
         </Link>
         <Tabs defaultValue={router.query.register ? "register" : "login"} className="w-[400px]">

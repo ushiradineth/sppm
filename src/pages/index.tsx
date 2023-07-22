@@ -8,7 +8,7 @@ const Home: NextPage = () => {
         <title>Welcome to SPPM</title>
       </Head>
       <main className="flex flex-col items-center justify-center bg-peach font-sans text-display text-primary">
-        <p>Welcome to SPPM-1 edit</p>
+        <p>Landing Page TODO</p>
       </main>
     </>
   );
