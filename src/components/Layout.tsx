@@ -13,6 +13,7 @@ import { env } from "@/env.mjs";
 import useWindowDimensions from "@/hooks/useWindowDimensions";
 
 import icon from "../../public/icon.png";
+import Footer from "./Footer";
 import Loader from "./Loader";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Button } from "./ui/button";
@@ -44,7 +45,7 @@ function Layout(props: { children: React.ReactNode }) {
   if (status === "authenticated" && router.pathname === "/auth") router.push("/");
 
   return (
-    <main className="dark flex min-h-screen flex-col bg-peach">
+    <main className="flex min-h-screen flex-col bg-peach">
       <div
         style={{ zIndex: 100 }}
         className={`sticky top-0 flex h-14 items-center border-b bg-teak-light-1 backdrop-blur ${
@@ -65,6 +66,7 @@ function Layout(props: { children: React.ReactNode }) {
         className={`flex flex-grow flex-col items-center justify-center text-white ${router.pathname !== "/auth" && "my-10"}`}>
         {props.children}
       </div>
+      <Footer />
     </main>
   );
 }
