@@ -74,11 +74,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
           id: true,
         },
       },
-      _count: {
-        select: {
-          orders: true,
-        },
-      },
     },
   });
 
@@ -102,9 +97,6 @@ interface ProductWithDetails extends Product {
   category: {
     name: string;
     id: string;
-  };
-  _count: {
-    orders: number;
   };
 }
 
@@ -150,7 +142,6 @@ export default function ProductsPage({ products: serverProducts, count, total }:
                   <TableHead className="text-center">Name</TableHead>
                   <TableHead className="text-center">Category</TableHead>
                   <TableHead className="text-center">Created At</TableHead>
-                  <TableHead className="text-center">Orders</TableHead>
                   {session?.user.role === "Admin" && <TableHead className="text-center">Action</TableHead>}
                 </TableRow>
               </TableHeader>
@@ -166,7 +157,6 @@ export default function ProductsPage({ products: serverProducts, count, total }:
                           <Link href={`/category/${product.category.id}`}>{product.category.name}</Link>
                         </TableCell>
                         <TableCell className="text-center">{product.createdAt.toString()}</TableCell>
-                        <TableCell className="text-center">{product._count.orders}</TableCell>
                         <TableCell>
                           <div className="flex gap-4">
                             <DeleleProduct id={product.id} onSuccess={() => setProducts(products.filter((p) => p.id !== product.id))} />
@@ -180,7 +170,7 @@ export default function ProductsPage({ products: serverProducts, count, total }:
                   })
                 ) : (
                   <TableRow>
-                    <TableCell colSpan={6} className="h-24 text-center">
+                    <TableCell colSpan={4} className="h-24 text-center">
                       No results.
                     </TableCell>
                   </TableRow>

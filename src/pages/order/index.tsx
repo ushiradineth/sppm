@@ -64,7 +64,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     include: {
       _count: {
         select: {
-          products: true,
+          items: true,
         },
       },
       user: {
@@ -98,7 +98,7 @@ type OrderType = Order & {
     name: string;
   };
   _count: {
-    products: number;
+    items: number;
   };
 };
 
@@ -141,7 +141,8 @@ export default function Index({ orders: serverOrders, count, total }: pageProps)
                 <TableRow>
                   <TableHead className="text-center">User name</TableHead>
                   <TableHead className="text-center">Created At</TableHead>
-                  <TableHead className="text-center">Products</TableHead>
+                  <TableHead className="text-center">Items</TableHead>
+                  <TableHead className="text-center">Status</TableHead>
                   <TableHead className="text-center">Action</TableHead>
                 </TableRow>
               </TableHeader>
@@ -152,7 +153,8 @@ export default function Index({ orders: serverOrders, count, total }: pageProps)
                       <TableRow key={index}>
                         <TableCell className="text-center">{order.user.name}</TableCell>
                         <TableCell className="text-center">{order.createdAt.toString()}</TableCell>
-                        <TableCell className="text-center">{order._count.products}</TableCell>
+                        <TableCell className="text-center">{order._count.items}</TableCell>
+                        <TableCell className="text-center">{order.status}</TableCell>
                         <TableCell>
                           <div className="flex gap-4">
                             <DeleteOrder id={order.id} onSuccess={() => setOrders(orders.filter((p) => p.id !== order.id))} />

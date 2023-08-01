@@ -132,11 +132,15 @@ export const OrderEditSchema = yup
   .shape({
     Delivery: booleanValidator,
     Status: textValidator,
-    Products: yup
+    Items: yup
       .array(
         yup.object().shape({
-          id: idValidator,
-          name: textValidator,
+          id: yup.string().max(30),
+          quantity: numberValidator,
+          product: yup.object().shape({
+            id: idValidator,
+            name: textValidator,
+          }),
         }),
       )
       .required(),

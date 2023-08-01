@@ -102,8 +102,8 @@ export const userRouter = createTRPCRouter({
             const salt = bcrypt.genSaltSync(10);
             const hashedOtp = bcrypt.hashSync(OTP, salt);
 
-            await ctx.prisma.passwordResetRequest.deleteMany({ where: { userId: user?.id } });
-            await ctx.prisma.passwordResetRequest.create({ data: { userId: user?.id ?? "", otp: hashedOtp } });
+            await ctx.prisma.verification.deleteMany({ where: { userId: user?.id } });
+            await ctx.prisma.verification.create({ data: { userId: user?.id ?? "", otp: hashedOtp } });
 
             resolve(true);
           }
@@ -128,7 +128,7 @@ export const userRouter = createTRPCRouter({
         });
       }
 
-      const request = await ctx.prisma.passwordResetRequest.findFirst({ where: { userId: user.id } });
+      const request = await ctx.prisma.verification.findFirst({ where: { userId: user.id } });
 
       if (!request) {
         throw new TRPCError({
@@ -154,7 +154,7 @@ export const userRouter = createTRPCRouter({
         });
       }
 
-      await ctx.prisma.passwordResetRequest.delete({ where: { id: request?.id } });
+      await ctx.prisma.verification.delete({ where: { id: request?.id } });
 
       const salt = bcrypt.genSaltSync(10);
       const hashedPassword = bcrypt.hashSync(input.password, salt);

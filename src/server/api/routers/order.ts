@@ -6,12 +6,12 @@ import { adminProcedure, createTRPCRouter } from "../trpc";
 
 export const orderRouter = createTRPCRouter({
   create: adminProcedure
-    .input(z.object({ productIds: z.array(z.string()), delivery: z.boolean(), status: z.string(), total: z.number() }))
+    .input(z.object({ items: z.array(z.string()), delivery: z.boolean(), status: z.string(), total: z.number() }))
     .mutation(async ({ ctx, input }) => {
       return await ctx.prisma.order.create({
         data: {
-          products: {
-            connect: input.productIds.map((id) => ({ id })),
+          items: {
+            connect: input.items.map((id) => ({ id })),
           },
           delivery: input.delivery,
           status: input.status,
@@ -22,7 +22,15 @@ export const orderRouter = createTRPCRouter({
     }),
 
   update: adminProcedure
-    .input(z.object({ orderId: z.string(), delivery: z.boolean(), status: z.string(), products: z.array(z.string()) }))
+    .input(
+      z.object({
+        orderId: z.string(),
+        userId: z.string(),
+        delivery: z.boolean(),
+        status: z.string(),
+        items: z.object({ id: z.string(), productId: z.string(), quantity: z.number() }).array(),
+      }),
+    )
     .mutation(async ({ ctx, input }) => {
       const status = input.status as Status;
 
@@ -32,7 +40,43 @@ export const orderRouter = createTRPCRouter({
           delivery: input.delivery,
           status: input.status,
           completedAt: status === "Completed" || status === "Cancelled" ? new Date() : undefined,
-          products: { connect: input.products.map((id) => ({ id })) || [] },
+          items: {
+            connectOrCreate:
+              input.items
+                .filter((item) => item.id === "" && item.quantity > 0)
+                .map((item) => {
+                  return {
+                    create: {
+                      user: { connect: { id: input.userId } },
+                      product: { connect: { id: item.productId } },
+                      quantity: item.quantity,
+                    },
+                    where: { id: item.id },
+                  };
+                }) || [],
+            update:
+              input.items
+                .filter((item) => item.id !== "" && item.quantity > 0)
+                .map((item) => {
+                  return {
+                    data: {
+                      user: { connect: { id: input.userId } },
+                      product: { connect: { id: item.productId } },
+                      quantity: item.quantity,
+                    },
+                    where: { id: item.id },
+                  };
+                }) || [],
+            delete:
+              input.items
+                .filter((item) => item.id !== "" && item.quantity === 0)
+                .map((item) => {
+                  return { id: item.id };
+                }) ?? [],
+          },
+        },
+        select: {
+          items: true,
         },
       });
     }),

@@ -1,6 +1,6 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { type Category, type Product } from "@prisma/client";
-import { XIcon } from "lucide-react";
+import { Minus, Plus } from "lucide-react";
 import { getSession } from "next-auth/react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
@@ -38,10 +38,21 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     where: { id: context.params?.id as string },
     select: {
       id: true,
-      products: {
+      user: {
         select: {
           id: true,
-          name: true,
+        },
+      },
+      items: {
+        select: {
+          id: true,
+          quantity: true,
+          product: {
+            select: {
+              id: true,
+              name: true,
+            },
+          },
         },
       },
       status: true,
@@ -50,8 +61,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   });
 
   const products = await prisma.product.findMany({ select: { id: true, name: true } });
-
-  console.log(order, products);
 
   if (!order) return { props: {} };
 
@@ -65,7 +74,17 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 interface Order {
   id: string;
-  products: Product[];
+  user: {
+    id: string;
+  };
+  items: {
+    id: string;
+    quantity: number;
+    product: {
+      id: string;
+      name: string;
+    };
+  }[];
   status: Status;
   delivery: boolean;
 }
@@ -85,6 +104,7 @@ export default function EditProduct({ order, products }: pageProps) {
     onError: (error) => toast.error(error.message),
     onSuccess: () => {
       toast.success("Order has been updated");
+      location.reload();
     },
   });
 
@@ -93,13 +113,16 @@ export default function EditProduct({ order, products }: pageProps) {
       delivery: data.Delivery,
       status: data.Status,
       orderId: order.id,
-      products: data.Products.map((product) => product.id),
+      userId: order.user.id,
+      items: data.Items.map((item) => {
+        return { id: item.id ?? "", quantity: item.quantity, productId: item.product.id };
+      }),
     });
   };
 
   useEffect(() => {
     if (order) {
-      form.setValue("Products", order.products);
+      form.setValue("Items", order.items);
       form.setValue("Delivery", order.delivery);
       form.setValue("Status", order.status);
     }
@@ -150,28 +173,60 @@ export default function EditProduct({ order, products }: pageProps) {
 
                 <FormField
                   control={form.control}
-                  name="Products"
+                  name="Items"
                   render={({}) => (
                     <FormItem>
                       <FormLabel>Products</FormLabel>
                       <FormControl>
                         <>
-                          {form.getValues("Products")?.length > 0 && (
-                            <Card className="p-4">
+                          {form.getValues("Items")?.filter((item) => item.quantity > 0).length > 0 && (
+                            <Card className="select-none p-4">
                               <ul className="list-disc">
-                                {(Array.isArray(form.getValues("Products")) ? form.getValues("Products") : []).map((product, index) => (
+                                {(Array.isArray(form.getValues("Items"))
+                                  ? form.getValues("Items").filter((item) => item.quantity > 0)
+                                  : []
+                                ).map((item, index) => (
                                   <li key={index} className="flex">
-                                    <p className="w-full truncate">{product.name}</p>
-                                    <span
-                                      className="ml-auto cursor-pointer"
-                                      onClick={() =>
-                                        form.setValue(
-                                          "Products",
-                                          [...form.getValues("Products")].filter((_, i) => i !== index),
-                                        )
-                                      }>
-                                      <XIcon />
-                                    </span>
+                                    <p className="w-full truncate">{item.product.name}</p>
+                                    <div className="ml-auto flex gap-2">
+                                      <Minus
+                                        className="cursor-pointer"
+                                        onClick={() => {
+                                          form.setValue(
+                                            "Items",
+                                            form.getValues("Items").map((item, innerIndex) => {
+                                              if (index === innerIndex) {
+                                                return {
+                                                  ...item,
+                                                  quantity: item.quantity - 1,
+                                                };
+                                              } else {
+                                                return item;
+                                              }
+                                            }),
+                                          );
+                                        }}
+                                      />
+                                      <p className="select-none">{item.quantity}</p>
+                                      <Plus
+                                        className="cursor-pointer"
+                                        onClick={() =>
+                                          form.setValue(
+                                            "Items",
+                                            form.getValues("Items").map((item, innerIndex) => {
+                                              if (index === innerIndex) {
+                                                return {
+                                                  ...item,
+                                                  quantity: item.quantity + 1,
+                                                };
+                                              } else {
+                                                return item;
+                                              }
+                                            }),
+                                          )
+                                        }
+                                      />
+                                    </div>
                                   </li>
                                 ))}
                               </ul>
@@ -179,15 +234,25 @@ export default function EditProduct({ order, products }: pageProps) {
                           )}
                           <div className="flex flex-row gap-2">
                             <Select
-                              onValueChange={(value) =>
-                                form.setValue("Products", [
-                                  ...form.getValues("Products"),
-                                  {
-                                    id: products.filter((product) => product.id === value)[0]?.id ?? "",
-                                    name: products.filter((product) => product.id === value)[0]?.name ?? "",
-                                  },
-                                ])
-                              }
+                              onValueChange={(value) => {
+                                if (form.getValues("Items")?.filter((item) => item.product.id === JSON.parse(value).id)[0] !== undefined) {
+                                  form.setValue(
+                                    "Items",
+                                    form.getValues("Items").map((item) => {
+                                      if (item.product.id === JSON.parse(value).id) {
+                                        return {
+                                          ...item,
+                                          quantity: item.quantity + 1,
+                                        };
+                                      } else {
+                                        return item;
+                                      }
+                                    }),
+                                  );
+                                } else {
+                                  form.setValue("Items", [...form.getValues("Items"), { id: "", product: JSON.parse(value), quantity: 1 }]);
+                                }
+                              }}
                               value={undefined}>
                               <SelectTrigger className="w-[400px]">
                                 <SelectValue placeholder="Add a product" />
@@ -195,7 +260,7 @@ export default function EditProduct({ order, products }: pageProps) {
                               <SelectContent className="w-max">
                                 {products.map((product, index) => {
                                   return (
-                                    <SelectItem key={index} value={product.id}>
+                                    <SelectItem key={index} value={JSON.stringify(product)}>
                                       {product.name}
                                     </SelectItem>
                                   );

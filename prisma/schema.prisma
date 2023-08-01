@@ -8,40 +8,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Account {
-  id                String  @id @default(cuid())
-  userId            String
-  type              String
-  provider          String
-  providerAccountId String
-  refresh_token     String?
-  access_token      String?
-  expires_at        Int?
-  token_type        String?
-  scope             String?
-  id_token          String?
-  session_state     String?
-  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@unique([provider, providerAccountId])
-}
-
-model Session {
-  id           String   @id @default(cuid())
-  sessionToken String   @unique
-  userId       String
-  expires      DateTime
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-}
-
-model VerificationToken {
-  identifier String
-  token      String   @unique
-  expires    DateTime
-
-  @@unique([identifier, token])
-}
-
 model Admin {
   id        String   @id @default(cuid())
   name      String
@@ -51,16 +17,13 @@ model Admin {
 }
 
 model User {
-  id            String    @id @default(cuid())
-  createdAt     DateTime  @default(now())
-  name          String
-  email         String    @unique
-  emailVerified DateTime?
-  password      String
-  orders        Order[]
-  cart          Product[]
-  accounts      Account[]
-  sessions      Session[]
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  name      String
+  email     String   @unique
+  password  String
+  orders    Order[]
+  cart      Item[]
 }
 
 model Product {
@@ -74,8 +37,7 @@ model Product {
   categoryId  String
 
   // cross relation rows
-  orders Order[]
-  user   User[]
+  items Item[]
 }
 
 model Category {
@@ -90,135 +52,28 @@ model Order {
   id          String    @id @default(cuid())
   createdAt   DateTime  @default(now())
   completedAt DateTime?
-  user        User      @relation(fields: [userId], references: [id])
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId      String
   total       Float
   status      String
-  products    Product[]
+  items       Item[]
   delivery    Boolean
 }
 
-model PasswordResetRequest {
+model Item {
+  id        String  @id @default(cuid())
+  quantity  Int
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId String
+  order     Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  orderId   String
+}
+
+model Verification {
   id        String   @id @default(cuid())
   userId    String
   otp       String
   createdAt DateTime @default(now())
 }
-
-
-// generator client {
-//   provider        = "prisma-client-js"
-//   previewFeatures = ["fullTextSearch"]
-// }
-
-// datasource db {
-//   provider = "postgresql"
-//   url      = env("DATABASE_URL")
-// }
-
-// model Account {
-//   id                String  @id @default(cuid())
-//   userId            String
-//   type              String
-//   provider          String
-//   providerAccountId String
-//   refresh_token     String?
-//   access_token      String?
-//   expires_at        Int?
-//   token_type        String?
-//   scope             String?
-//   id_token          String?
-//   session_state     String?
-//   user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-//   @@unique([provider, providerAccountId])
-// }
-
-// model Session {
-//   id           String   @id @default(cuid())
-//   sessionToken String   @unique
-//   userId       String
-//   expires      DateTime
-//   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-// }
-
-// model VerificationToken {
-//   identifier String
-//   token      String   @unique
-//   expires    DateTime
-
-//   @@unique([identifier, token])
-// }
-
-// model Admin {
-//   id        String   @id @default(cuid())
-//   name      String
-//   email     String   @unique
-//   password  String
-//   createdAt DateTime @default(now())
-// }
-
-// model User {
-//   id            String    @id @default(cuid())
-//   createdAt     DateTime  @default(now())
-//   name          String
-//   email         String    @unique
-//   emailVerified DateTime?
-//   password      String
-//   orders        Order[]
-//   cart          CartItem[]
-//   accounts      Account[]
-//   sessions      Session[]
-// }
-
-// model Product {
-//   id          String   @id @default(cuid())
-//   createdAt   DateTime @default(now())
-//   name        String
-//   description String
-//   price       Float
-//   available   Boolean
-//   category    Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
-//   categoryId  String
-//   cartItem    CartItem[]
-// }
-
-// model Category {
-//   id          String    @id @default(cuid())
-//   createdAt   DateTime  @default(now())
-//   name        String
-//   description String
-//   products    Product[]
-// }
-
-// model Order {
-//   id          String    @id @default(cuid())
-//   createdAt   DateTime  @default(now())
-//   completedAt DateTime?
-//   user        User      @relation(fields: [userId], references: [id])
-//   userId      String
-//   total       Float
-//   status      String
-//   items       CartItem[]
-//   delivery    Boolean
-// }
-
-// model PasswordResetRequest {
-//   id        String   @id @default(cuid())
-//   userId    String
-//   otp       String
-//   createdAt DateTime @default(now())
-// }
-
-// model CartItem {
-//   id String @id @default(cuid())
-
-//   product Product @relation(fields: [productId], references: [id])
-//   productId String
-
-//   order Order @relation(fields: [orderId], references: [id])
-//   orderId String
-
-//   user User @relation(fields: [userId], references: [id])
-//   userId String
-// }
