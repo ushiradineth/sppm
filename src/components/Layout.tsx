@@ -63,10 +63,14 @@ function Layout(props: { children: React.ReactNode }) {
       </div>
       <div
         style={{ zIndex: 50, position: "relative" }}
-        className={`flex flex-grow flex-col items-center justify-center text-white ${router.pathname !== "/auth" && "my-10"}`}>
+        className={`flex flex-grow flex-col items-center justify-center text-white ${
+          !NAVBAR_HIDDEN_PATHS.includes(router.pathname) && "my-10"
+        }`}>
         {props.children}
       </div>
-      <Footer />
+      <div style={{ display: `${NAVBAR_HIDDEN_PATHS.includes(router.pathname) ? "none" : "block"}` }}>
+        <Footer />
+      </div>
     </main>
   );
 }
