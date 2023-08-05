@@ -12,8 +12,8 @@ export const periodValidtor = yup.number().min(1).max(365).oneOf([1, 7, 28, 365]
 export const otpValidtor = yup.string().min(1).max(6).required();
 export const booleanValidator = yup.boolean().required();
 
-export type Status = "Preparing" | "Prepared" | "OTW" | "Completed" | "Cancelled";
-export const status = ["Preparing", "Prepared", "OTW", "Completed", "Cancelled"] as Status[];
+export type Status = "Processing" | "Preparing" | "Prepared" | "OTW" | "Completed" | "Cancelled";
+export const status = ["Processing", "Preparing", "Prepared", "OTW", "Completed", "Cancelled"] as Status[];
 
 export const statusValidator = yup
   .string()
