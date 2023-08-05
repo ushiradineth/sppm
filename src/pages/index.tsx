@@ -61,7 +61,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Welcome to SPPM</title>
+        <title>Welcome to Coffee shop</title>
       </Head>
       <main className="flex w-full max-w-[1024px] flex-col items-center justify-center gap-12 bg-peach p-4 font-sans text-display text-primary tablet:gap-16">
         <div className="relative flex w-[100%] items-center justify-center">

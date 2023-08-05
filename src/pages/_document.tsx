@@ -4,7 +4,7 @@ export default function Document() {
   return (
     <Html>
       <Head>
-        <meta name="description" content="SPPM by Group 3" />
+        <meta name="description" content="Coffee shop by Group 3" />
         <link rel="icon" href="/icon.png" />
       </Head>
       <body>
