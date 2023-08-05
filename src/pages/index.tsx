@@ -58,8 +58,6 @@ const TESTIMONIALS: Testimonial[] = [
 const Home: NextPage = () => {
   const { data: categories } = api.category.getAll.useQuery();
 
-  if (!categories) return <Loader background />;
-
   return (
     <>
       <Head>
@@ -77,8 +75,8 @@ const Home: NextPage = () => {
             className="rounded-lg"
           />
           <div className="absolute left-0 top-0 flex h-full w-full flex-col items-center justify-center rounded-lg bg-black bg-opacity-50 p-4">
-            <h1 className="text-h1 text-peach drop-shadow-lg ">The Brown Bean Coffee</h1>
-            <h2 className="text-h5 text-peach drop-shadow-lg ">Serving the Best Coffee and Delightful Food Since 2012</h2>
+            <h1 className="text-center text-h1 text-peach drop-shadow-lg">The Brown Bean Coffee</h1>
+            <h2 className="text-center text-h5 text-peach drop-shadow-lg">Serving the Best Coffee and Delightful Food Since 2012</h2>
           </div>
         </div>
         <div>
@@ -157,7 +155,7 @@ const Home: NextPage = () => {
             </div>
           </div>
         ) : (
-          <Loader background />
+          <Loader />
         )}
         <div className="w-full">
           <h2 className="text-h1">Testimonials</h2>
