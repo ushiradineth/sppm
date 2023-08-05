@@ -70,7 +70,7 @@ export default function ProductPage({ product, InCart }: pageProps) {
       <Head>
         <title>{product.name} - The Brown Bean Coffee</title>
       </Head>
-      <main className="grid grid-flow-row grid-rows-2 items-start justify-center gap-4 p-4 text-primary tablet:grid-cols-2 tablet:grid-rows-none">
+      <main className="grid max-w-[1024px] grid-flow-row grid-rows-2 items-start justify-center gap-4 p-4 text-primary tablet:grid-cols-2 tablet:grid-rows-none">
         <div>
           <Image
             src={`${env.NEXT_PUBLIC_SUPABASE_URL}/${env.NEXT_PUBLIC_PRODUCT_IMAGE_BUCKET}/${product.id}/0.jpg`}
