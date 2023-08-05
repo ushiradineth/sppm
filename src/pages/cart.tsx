@@ -101,7 +101,14 @@ export default function Cart({ cart: serverCart }: Props) {
             <div className="flex flex-col gap-2">
               {cart.length === 0 && <div className="text-label text-black">No items in cart</div>}
               {cart.map((item) => (
-                <ItemCard key={item.id} item={item} onDelete={(id) => setCart((cart) => cart.filter((prevItem) => prevItem.id !== id))} />
+                <ItemCard
+                  key={item.id}
+                  item={item}
+                  onChange={(id, quantity) =>
+                    setCart((cart) => cart.map((prevItem) => (prevItem.id === id ? { ...prevItem, quantity } : prevItem)))
+                  }
+                  onDelete={(id) => setCart((cart) => cart.filter((prevItem) => prevItem.id !== id))}
+                />
               ))}
             </div>
             {cart.length !== 0 && (
@@ -143,11 +150,24 @@ export default function Cart({ cart: serverCart }: Props) {
   );
 }
 
-const ItemCard = ({ item, onDelete }: { item: Item; onDelete: (id: string) => void }) => {
+const ItemCard = ({
+  item,
+  onChange,
+  onDelete,
+}: {
+  item: Item;
+  onChange: (id: string, quantity: number) => void;
+  onDelete: (id: string) => void;
+}) => {
   const [quantity, setQuantity] = useState(item.quantity);
   const { mutate, isLoading } = api.cart.update.useMutation({
     onSuccess: (data) => {
-      data === 0 ? onDelete(item.id) : setQuantity(data);
+      if (data === 0) {
+        onDelete(item.id);
+      } else {
+        onChange(item.id, data);
+        setQuantity(data);
+      }
     },
   });
 
