@@ -67,7 +67,7 @@ export default function Orders({ orders }: Props) {
             <AccordionItem key={order.id} value={order.id}>
               <AccordionTrigger>
                 <div className="flex w-full items-center justify-center text-label">
-                  <p>{order.id}</p>
+                  <p>Order No: {order.id}</p>
                   <p
                     style={{ borderColor: getStatusColor(order.status as Status), color: getStatusColor(order.status as Status) }}
                     className="ml-auto mr-2 rounded-xl border-2 p-1">
@@ -82,7 +82,8 @@ export default function Orders({ orders }: Props) {
                     <ItemCard key={item.id} item={item} />
                   ))}
                   <p className="ml-auto">
-                    {`${order.items.reduce((acc, curr) => acc + curr.product.price * curr.quantity, 0)} LKR for ${order.items.reduce(
+                    LKR{" "}
+                    {`${order.items.reduce((acc, curr) => acc + curr.product.price * curr.quantity, 0)} for ${order.items.reduce(
                       (acc, curr) => acc + curr.quantity,
                       0,
                     )} items`}
@@ -115,7 +116,7 @@ const ItemCard = ({ item }: { item: ItemWithProduct }) => {
           <p className="text-p font-normal drop-shadow-lg tablet:text-h6">{item.product.description}</p>
         </div>
         <p className="ml-auto text-tiny drop-shadow-lg tablet:text-label">
-          LKR {item.product.price} x {item.quantity} = LKR {item.product.price * item.quantity}
+          LKR {item.product.price * item.quantity} for {item.quantity} PC
         </p>
       </div>
     </Link>
