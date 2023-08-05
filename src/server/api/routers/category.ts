@@ -36,10 +36,8 @@ export const categoryRouter = createTRPCRouter({
     return [
       ...categories.map((category) => ({
         id: category.id,
-        data: {
-          name: category.name,
-          image: `${env.NEXT_PUBLIC_SUPABASE_URL}/${env.NEXT_PUBLIC_PRODUCT_IMAGE_BUCKET}/${category.products[0]?.id ?? ""}/0.jpg`,
-        },
+        name: category.name,
+        image: `${env.NEXT_PUBLIC_SUPABASE_URL}/${env.NEXT_PUBLIC_PRODUCT_IMAGE_BUCKET}/${category.products[0]?.id ?? ""}/0.jpg`,
       })),
     ];
   }),
