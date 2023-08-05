@@ -86,7 +86,7 @@ function NavItems() {
         <Link href={"/"}>Home</Link>
         <Link href={"/menu"}>Menu</Link>
         <Link href={"/location"}>Location</Link>
-        <Link href={"/franchise"}>Franchise</Link>
+        {/* <Link href={"/franchise"}>Franchise</Link> */}
       </div>
     ),
     [],
@@ -151,7 +151,7 @@ function AuthButton() {
 
   const Profile = useCallback(
     () => (
-      <Link href={session?.user.role === "User" ? `/user/${session?.user.id}` : `/`}>
+      <div>
         <MenubarItem className="flex flex-col items-center justify-center p-4">
           <Avatar>
             <AvatarImage
@@ -167,7 +167,7 @@ function AuthButton() {
           <p>{session?.user.name}</p>
           <p>{session?.user.email}</p>
         </MenubarItem>
-      </Link>
+      </div>
     ),
     [session?.user.email, session?.user.id, session?.user.name, session?.user.role],
   );

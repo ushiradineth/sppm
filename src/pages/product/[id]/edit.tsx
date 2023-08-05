@@ -182,7 +182,7 @@ export default function EditProduct({ product, categories }: pageProps) {
                     <FormItem>
                       <FormLabel>Price</FormLabel>
                       <FormControl>
-                        <Input placeholder="Price of the tier in LKR" type="number" step={"0.01"} min={0} {...field} />
+                        <Input placeholder="Price of the tier in LKR" type="number" step={"0"} min={0} {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
