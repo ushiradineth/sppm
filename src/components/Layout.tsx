@@ -63,7 +63,7 @@ function Layout(props: { children: React.ReactNode }) {
       </div>
       <div
         style={{ zIndex: 50, position: "relative" }}
-        className={`flex flex-grow flex-col items-center justify-center text-white ${
+        className={`flex flex-grow flex-col items-center justify-center scroll-smooth text-white ${
           !NAVBAR_HIDDEN_PATHS.includes(router.pathname) && "my-10"
         }`}>
         {props.children}

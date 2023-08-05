@@ -4,6 +4,7 @@ import moment from "moment";
 import { type NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 
 import { api } from "@/utils/api";
 
@@ -13,6 +14,7 @@ import Loader from "@/components/Loader";
 import { generalizeDate } from "@/lib/utils";
 
 type Category = {
+  id: string;
   name: string;
   image: string;
 };
@@ -142,13 +144,13 @@ const Home: NextPage = () => {
             <div className="mt-4">
               <div className="desktop:grid-row-2 tablet:grid-row-4 hidden gap-2 tablet:grid tablet:grid-cols-3 desktop:grid-flow-row desktop:grid-cols-5">
                 {categories.map((category, index) => (
-                  <WebCategory category={category.data} last={index === categories.length - 1} key={category.id} />
+                  <WebCategory category={category} last={index === categories.length - 1} key={category.id} />
                 ))}
               </div>
               <div className="flex tablet:hidden">
                 <Carousel indicators navButtons autoScroll>
                   {categories.map((category) => (
-                    <MobileCategory category={category.data} key={category.id} />
+                    <MobileCategory category={category} key={category.id} />
                   ))}
                 </Carousel>
               </div>
@@ -177,7 +179,9 @@ export default Home;
 
 const WebCategory = ({ category, last }: { category: Category; last: boolean }) => {
   return (
-    <div className={`flex h-40 items-center justify-center rounded-lg ${last ? "tablet:col-span-3 desktop:col-span-1" : ""}`}>
+    <Link
+      href={`/menu?category=${category.id}`}
+      className={`flex h-40 items-center justify-center rounded-lg ${last ? "tablet:col-span-3 desktop:col-span-1" : ""}`}>
       <div className="relative flex h-40 w-full items-center justify-center rounded-lg">
         <Image
           src={category.image}
@@ -192,13 +196,13 @@ const WebCategory = ({ category, last }: { category: Category; last: boolean }) 
           <p className="text-h5 text-peach drop-shadow-lg">{category.name}</p>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
 const MobileCategory = ({ category }: { category: Category }) => {
   return (
-    <div className="flex h-[100vw] w-screen items-center justify-center rounded-lg bg-peach-dark-3">
+    <Link href={`/menu?category=${category.id}`} className="flex h-[100vw] w-screen items-center justify-center rounded-lg bg-peach-dark-3">
       <div className="relative flex h-[100vw] w-screen items-center justify-center rounded-lg">
         <Image
           src={category.image}
@@ -212,7 +216,7 @@ const MobileCategory = ({ category }: { category: Category }) => {
           <p className="text-h5 text-peach drop-shadow-lg">{category.name}</p>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
