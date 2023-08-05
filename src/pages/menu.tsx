@@ -35,14 +35,14 @@ export const getServerSideProps: GetServerSideProps = async () => {
 };
 
 type Product = {
-  id: number;
+  id: string;
   name: string;
   description: string;
   price: number;
 };
 
 type Category = {
-  id: number;
+  id: string;
   name: string;
   description: string;
   products: Product[];
@@ -87,13 +87,13 @@ export default function Menu({ categories }: Props) {
           {categories.map(
             (category) =>
               category.products.length > 0 && (
-                <AccordionItem key={category.id} value={String(category.id)}>
+                <AccordionItem key={category.id} value={category.id}>
                   <AccordionTrigger>{category.name}</AccordionTrigger>
                   <AccordionContent>
                     <h2 className="mb-5">{category.description}</h2>
                     <div className="flex flex-col gap-4">
-                      {category.products.map((product) => (
-                        <ProductCard key={product.id} product={product} />
+                      {category.products.map((product, index) => (
+                        <ProductCard key={product.id} product={product} last={category.products.length - 1 === index} />
                       ))}
                     </div>
                   </AccordionContent>
@@ -106,9 +106,9 @@ export default function Menu({ categories }: Props) {
   );
 }
 
-const ProductCard = ({ product }: { product: Product }) => {
+const ProductCard = ({ product, last }: { product: Product; last: boolean }) => {
   return (
-    <Link href={`/product/${product.id}`} className={`flex items-center justify-center`}>
+    <Link href={`/product/${product.id}`} className={`flex items-center justify-center ${!last && "border-b pb-2"}`}>
       <div className="relative flex h-[100px] w-[100px] items-center justify-center p-8">
         <Image
           src={`${env.NEXT_PUBLIC_SUPABASE_URL}/${env.NEXT_PUBLIC_PRODUCT_IMAGE_BUCKET}/${product.id}/0.jpg`}

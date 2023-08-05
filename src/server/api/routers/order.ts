@@ -2,11 +2,11 @@ import { z } from "zod";
 
 import { type Status } from "@/utils/validators";
 
-import { adminProcedure, createTRPCRouter } from "../trpc";
+import { adminProcedure, createTRPCRouter, protectedProcedure } from "../trpc";
 
 export const orderRouter = createTRPCRouter({
-  create: adminProcedure
-    .input(z.object({ items: z.array(z.string()), delivery: z.boolean(), status: z.string(), total: z.number() }))
+  create: protectedProcedure
+    .input(z.object({ items: z.array(z.string()), delivery: z.boolean(), status: z.string() }))
     .mutation(async ({ ctx, input }) => {
       return await ctx.prisma.order.create({
         data: {
@@ -15,7 +15,6 @@ export const orderRouter = createTRPCRouter({
           },
           delivery: input.delivery,
           status: input.status,
-          total: input.total,
           user: { connect: { id: ctx.session.user.id } },
         },
       });

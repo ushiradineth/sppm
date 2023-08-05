@@ -161,4 +161,11 @@ export const userRouter = createTRPCRouter({
 
       return await ctx.prisma.user.update({ where: { id: user.id }, data: { password: hashedPassword } });
     }),
+
+  clearCart: protectedProcedure.input(z.object({ ids: z.array(z.string()) })).mutation(async ({ ctx, input }) => {
+    return await ctx.prisma.user.update({
+      where: { id: ctx.session.user.id },
+      data: { cart: { disconnect: input.ids.map((id) => ({ id })) } },
+    });
+  }),
 });

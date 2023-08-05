@@ -45,7 +45,7 @@ function Layout(props: { children: React.ReactNode }) {
   if (status === "authenticated" && router.pathname === "/auth") router.push("/");
 
   return (
-    <main className="flex min-h-screen flex-col bg-peach">
+    <main className="flex min-h-screen flex-col bg-peach text-primary">
       <div
         style={{ zIndex: 100 }}
         className={`sticky top-0 flex h-14 items-center border-b bg-teak-light-1 backdrop-blur ${
@@ -85,7 +85,7 @@ function NavItems() {
       <div className="flex flex-col items-center justify-center gap-4 tablet:flex-row">
         <Link href={"/"}>Home</Link>
         <Link href={"/menu"}>Menu</Link>
-        <Link href={"/locations"}>Locations</Link>
+        <Link href={"/location"}>Location</Link>
         <Link href={"/franchise"}>Franchise</Link>
       </div>
     ),

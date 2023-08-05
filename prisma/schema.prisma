@@ -54,7 +54,6 @@ model Order {
   completedAt DateTime?
   user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId      String
-  total       Float
   status      String
   items       Item[]
   delivery    Boolean
@@ -63,12 +62,12 @@ model Order {
 model Item {
   id        String  @id @default(cuid())
   quantity  Int
-  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId    String
+  user      User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String?
   product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
   productId String
   order     Order?   @relation(fields: [orderId], references: [id], onDelete: Cascade)
-  orderId   String
+  orderId   String?
 }
 
 model Verification {
