@@ -8,6 +8,10 @@ export default defineConfig({
     },
   },
 
+  env: {
+    BASE_URL: process.env.NEXTAUTH_URL ?? "http://localhost:3000",
+  },
+
   e2e: {
     setupNodeEvents(on, config) {},
   },

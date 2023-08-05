@@ -6,10 +6,10 @@
     "build": "next build",
     "dev": "next dev",
     "postinstall": "prisma generate",
-    "lint": "SKIP_ENV_VALIDATION=1 next lint",
+    "lint": "cross-env SKIP_ENV_VALIDATION=1 next lint",
     "start": "next start",
     "db:dev": "prisma studio",
-    "cypress": "NODE_ENV=test cypress open"
+    "cypress": "cross-env NODE_ENV=test SKIP_ENV_VALIDATION=1 cypress open"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.1.0",
