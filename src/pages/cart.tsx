@@ -174,17 +174,17 @@ const ItemCard = ({ item, onDelete }: { item: Item; onDelete: (id: string) => vo
               <Loader />
             ) : (
               <div className="flex w-full justify-evenly">
-                <p className="cursor-pointer text-tiny" onClick={() => mutate({ id: item.id, quantity: quantity - 1 })}>
+                <p className="cursor-pointer text-h6" onClick={() => mutate({ id: item.id, quantity: quantity - 1 })}>
                   -
                 </p>
-                <p className="select-none text-tiny">{quantity}</p>
-                <p className="cursor-pointer text-tiny" onClick={() => mutate({ id: item.id, quantity: quantity + 1 })}>
+                <p className="select-none text-h6">{quantity}</p>
+                <p className="cursor-pointer text-h6" onClick={() => quantity < 10 && mutate({ id: item.id, quantity: quantity + 1 })}>
                   +
                 </p>
               </div>
             )}
           </div>
-          <p className="text-center text-label drop-shadow-lg">LKR {item.product.price}</p>
+          <p className="text-center text-h6 drop-shadow-lg">LKR {item.product.price}</p>
         </div>
       </div>
     </div>
