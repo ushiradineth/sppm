@@ -30,7 +30,7 @@ export const categoryRouter = createTRPCRouter({
 
   getAll: publicProcedure.query(async ({ ctx }) => {
     const categories = await ctx.prisma.category.findMany({
-      select: { id: true, name: true, products: { orderBy: { orders: { _count: "desc" } } } },
+      select: { id: true, name: true, products: { orderBy: { items: { _count: "desc" } } } },
     });
 
     return [
@@ -38,7 +38,7 @@ export const categoryRouter = createTRPCRouter({
         id: category.id,
         data: {
           name: category.name,
-          image: `${env.NEXT_PUBLIC_SUPABASE_URL}/${env.NEXT_PUBLIC_PRODUCT_IMAGE_BUCKET}/${category.products[0]?.id}/0.jpg`,
+          image: `${env.NEXT_PUBLIC_SUPABASE_URL}/${env.NEXT_PUBLIC_PRODUCT_IMAGE_BUCKET}/${category.products[0]?.id ?? ""}/0.jpg`,
         },
       })),
     ];

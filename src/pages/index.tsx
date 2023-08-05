@@ -137,24 +137,28 @@ const Home: NextPage = () => {
             </div>
           </div>
         </div>
-        <div className="w-full">
-          <h2 className="text-h1">Menu</h2>
-          <h5 className="text-h5">Discover Our Delights</h5>
-          <div className="mt-4">
-            <div className="desktop:grid-row-2 tablet:grid-row-4 hidden gap-2 tablet:grid tablet:grid-cols-3 desktop:grid-flow-row desktop:grid-cols-5">
-              {categories.map((category, index) => (
-                <WebCategory category={category.data} last={index === categories.length - 1} key={category.id} />
-              ))}
-            </div>
-            <div className="flex tablet:hidden">
-              <Carousel indicators navButtons autoScroll>
-                {categories.map((category) => (
-                  <MobileCategory category={category.data} key={category.id} />
+        {categories ? (
+          <div className="w-full">
+            <h2 className="text-h1">Menu</h2>
+            <h5 className="text-h5">Discover Our Delights</h5>
+            <div className="mt-4">
+              <div className="desktop:grid-row-2 tablet:grid-row-4 hidden gap-2 tablet:grid tablet:grid-cols-3 desktop:grid-flow-row desktop:grid-cols-5">
+                {categories.map((category, index) => (
+                  <WebCategory category={category.data} last={index === categories.length - 1} key={category.id} />
                 ))}
-              </Carousel>
+              </div>
+              <div className="flex tablet:hidden">
+                <Carousel indicators navButtons autoScroll>
+                  {categories.map((category) => (
+                    <MobileCategory category={category.data} key={category.id} />
+                  ))}
+                </Carousel>
+              </div>
             </div>
           </div>
-        </div>
+        ) : (
+          <Loader background />
+        )}
         <div className="w-full">
           <h2 className="text-h1">Testimonials</h2>
           <h5 className="text-h5">Words from Our Satisfied Customers</h5>
