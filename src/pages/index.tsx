@@ -75,6 +75,7 @@ const Home: NextPage = () => {
             sizes="100vw"
             style={{ width: "100%", height: "500px", objectFit: "cover", opacity: "40%" }}
             className="rounded-lg"
+            priority
           />
           <div className="absolute left-0 top-0 flex h-full w-full flex-col items-center justify-center rounded-lg bg-black bg-opacity-50 p-4">
             <h1 className="text-center text-h1 text-peach drop-shadow-lg">The Brown Bean Coffee</h1>
@@ -85,7 +86,7 @@ const Home: NextPage = () => {
           <h2 className="text-h1">Who we are</h2>
           <div className="flex flex-col gap-4 tablet:flex-row">
             <div className="flex flex-col gap-4">
-              <h5 className="text-h5">Our Story</h5>
+              <h3 className="text-h5">Our Story</h3>
               <p className="text-tiny">
                 Welcome to The Brown Bean Coffee, where we create unforgettable experiences through delectable food and a welcoming
                 ambiance. Since 2012, we have dedicated ourselves to serving the finest coffee and a diverse range of coffee varieties that
@@ -107,6 +108,7 @@ const Home: NextPage = () => {
               sizes="100vh"
               className="max-h-[340px] w-full rounded-lg tablet:max-h-[340px] tablet:w-auto tablet:max-w-[362px] desktop:max-h-[260px] desktop:max-w-[489px]"
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              priority
             />
           </div>
         </div>
@@ -120,9 +122,10 @@ const Home: NextPage = () => {
               sizes="100vh"
               className="max-h-[340px] w-full rounded-lg tablet:max-h-[340px] tablet:w-auto tablet:max-w-[362px] desktop:max-h-[260px] desktop:max-w-[489px]"
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              priority
             />
             <div className="flex flex-col gap-4">
-              <h5 className="text-h5">Our Mission</h5>
+              <h3 className="text-h5">Our Mission</h3>
               <p className="text-tiny">
                 Our commitment to excellence extends beyond coffee. Our carefully curated menu features a wide range of culinary delights,
                 including hearty English breakfasts, mouthwatering burgers, nutritious salads, nourishing soups, and delightful submarines.
@@ -140,7 +143,7 @@ const Home: NextPage = () => {
         {categories ? (
           <div className="w-full">
             <h2 className="text-h1">Menu</h2>
-            <h5 className="text-h5">Discover Our Delights</h5>
+            <h3 className="text-h5">Discover Our Delights</h3>
             <div className="mt-4">
               <div className="desktop:grid-row-2 tablet:grid-row-4 hidden gap-2 tablet:grid tablet:grid-cols-3 desktop:grid-flow-row desktop:grid-cols-5">
                 {categories.map((category, index) => (
@@ -161,7 +164,7 @@ const Home: NextPage = () => {
         )}
         <div className="w-full">
           <h2 className="truncate text-h1">Testimonials</h2>
-          <h5 className="text-h5">Words from Our Satisfied Customers</h5>
+          <h3 className="text-h5">Words from Our Satisfied Customers</h3>
           <div className="mt-4">
             <div className="desktop:grid-row-2 tablet:grid-row-4 grid gap-2 tablet:grid tablet:grid-cols-2">
               {TESTIMONIALS.map((testimonial, index) => (
