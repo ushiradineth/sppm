@@ -8,6 +8,7 @@ import { api } from "@/utils/api";
 import "@/styles/globals.css";
 
 import { DM_Sans, Libre_Baskerville } from "@next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 import NextNProgress from "nextjs-progressbar";
 import { ToastContainer } from "react-toastify";
 
@@ -49,6 +50,7 @@ const MyApp: AppType<{ session: Session | null }> = ({ Component, pageProps: { s
           `}
         </style>
         <Component {...pageProps} />
+        <Analytics />
         <ToastContainer
           position="bottom-right"
           toastClassName={() =>
