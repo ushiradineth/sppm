@@ -142,7 +142,7 @@ export default function ProductsPage({ products: serverProducts, count, total }:
                   <TableHead className="text-center">Name</TableHead>
                   <TableHead className="text-center">Category</TableHead>
                   <TableHead className="text-center">Created At</TableHead>
-                  {session?.user.role === "Admin" && <TableHead className="text-center">Action</TableHead>}
+                  <TableHead className="text-center">Action</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
