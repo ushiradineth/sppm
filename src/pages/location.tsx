@@ -5,8 +5,8 @@ export default function Location() {
     <div className="flex flex-col gap-2 p-4 desktop:flex-row">
       <div className="relative flex w-[100%] items-center justify-center">
         <Image
-          src="https://ksapkpyzblzmnusrhtxk.supabase.co/storage/v1/object/public/ASSETS/product-image-1.jpg"
-          alt={"Main Image"}
+          src="https://ksapkpyzblzmnusrhtxk.supabase.co/storage/v1/object/public/ASSETS/location-1.jpg"
+          alt={"Image of the Cafe"}
           width={0}
           height={0}
           sizes="100vw"
