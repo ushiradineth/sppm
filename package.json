@@ -9,9 +9,7 @@
     "lint": "cross-env SKIP_ENV_VALIDATION=1 next lint",
     "start": "next start",
     "db:dev": "prisma studio",
-    "cypress": "cross-env NODE_ENV=test SKIP_ENV_VALIDATION=1 cypress open",
-    "test:build": "NODE_ENV=test SKIP_ENV_VALIDATION=1 next build",
-    "test:start": "NODE_ENV=test SKIP_ENV_VALIDATION=1 next start"
+    "cypress": "cross-env NODE_ENV=test SKIP_ENV_VALIDATION=1 cypress open"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.1.0",
