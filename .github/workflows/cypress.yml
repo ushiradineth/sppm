@@ -9,7 +9,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Install Yarn
-        run: npm install -g yarn
+        run: npm install -g yarn && yarn install
 
       - name: Run Cypress
         uses: cypress-io/github-action@v5
@@ -17,4 +17,4 @@ jobs:
           BASE_URL: ${{ github.event.deployment_status.target_url }}
           SKIP_ENV_VALIDATION: 1
         with:
-          command: yarn install
+          command: yarn cypress
