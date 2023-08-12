@@ -86,7 +86,7 @@ export default function Cart({ cart: serverCart }: Props) {
   const [cart, setCart] = useState(serverCart);
   const [delivery, setDelivery] = useState(false);
 
-  const { mutate: clearCart } = api.user.clearCart.useMutation({ onSuccess: () => toast("Order has been created") });
+  const { mutate: clearCart, isLoading } = api.user.clearCart.useMutation({ onSuccess: () => toast("Order has been created") });
   const { mutate } = api.order.create.useMutation({ onSuccess: () => clearCart({ ids: cart.map((item) => item.id) }) });
 
   return (
@@ -137,6 +137,7 @@ export default function Cart({ cart: serverCart }: Props) {
                         status: "Processing",
                       })
                     }
+                    loading={isLoading}
                     className="w-full">
                     Confirm
                   </Button>
