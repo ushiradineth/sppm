@@ -16,5 +16,3 @@ jobs:
         env:
           BASE_URL: ${{ github.event.deployment_status.target_url }}
           SKIP_ENV_VALIDATION: 1
-        with:
-          command: yarn cypress
