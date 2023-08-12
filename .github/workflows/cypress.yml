@@ -17,5 +17,4 @@ jobs:
           BASE_URL: ${{ github.event.deployment_status.target_url }}
           SKIP_ENV_VALIDATION: 1
         with:
-          build: npm run build
-          start: npm run start
+          command: yarn i
