@@ -9,7 +9,10 @@ export default defineConfig({
   },
 
   env: {
-    BASE_URL: process.env.NEXTAUTH_URL ?? "http://localhost:3000",
+    BASE_URL:
+      process.env.NODE_ENV === "test"
+        ? process.env.NEXTAUTH_URL ?? "http://localhost:3000"
+        : process.env.BASE_URL ?? "http://localhost:3000",
   },
 
   e2e: {

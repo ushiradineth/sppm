@@ -28,32 +28,32 @@ type Testimonial = {
 
 const TESTIMONIALS: Testimonial[] = [
   {
-    name: "User Name Initials",
-    date: "24/12/2022",
-    rating: 4,
+    name: "M.U.",
+    date: "28/07/2023",
+    rating: 5,
     review:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lacinia, ipsum at viverra vulputate, eros tortor gravida leo, at aliquet nisi nisi nec nisi. Nulla facilisi. Sed",
+      "A Cool place with various type of beverages and snacks. Eco friendly. Most visited tourist place in the area. Friendly staff. Safe environment. Indoor and outdoor dining. A cozy place. All-day English breakfast is a must try. Good place to have a break and enjoy good food in Colombo 7.",
   },
   {
-    name: "User Name Initials",
-    date: "24/12/2022",
-    rating: 4,
+    name: "S.S.",
+    date: "25/04/2023",
+    rating: 5,
     review:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lacinia, ipsum at viverra vulputate, eros tortor gravida leo, at aliquet nisi nisi nec nisi. Nulla facilisi. Sed",
+      "This is a well managed small cafe in Colombo. A variety of veg and nonveg options. They have an excellent lineup of hot and cold beverages. Friendly staff, quick service, accessible location, fair prices and cleanliness are noteworthy.",
   },
   {
-    name: "User Name Initials",
-    date: "24/12/2022",
-    rating: 4,
+    name: "P.G.",
+    date: "08/02/2023",
+    rating: 5,
     review:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lacinia, ipsum at viverra vulputate, eros tortor gravida leo, at aliquet nisi nisi nec nisi. Nulla facilisi. Sed",
+      "Good wraps and very very good smoothies, perfect for hot days! Also the afogato was good, the have a good coffee and a nice italian coffee machine. Staff were really nice friendly with big smiles. Definitely recommended to have a chat with someone and relax a bit.",
   },
   {
-    name: "User Name Initials",
-    date: "24/12/2022",
-    rating: 4,
+    name: "T.R.",
+    date: "04/02/2023",
+    rating: 5,
     review:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lacinia, ipsum at viverra vulputate, eros tortor gravida leo, at aliquet nisi nisi nec nisi. Nulla facilisi. Sed",
+      "Nice cozy little place. We had smoothies. They were tasty and worthy for the not-expensive price. It’s a great place to have a chat with someone even though it’s a small place because of the people working there.",
   },
 ];
 
@@ -68,13 +68,14 @@ const Home: NextPage = () => {
       <main className="flex w-full max-w-[1024px] flex-col items-center justify-center gap-12 bg-peach p-4 font-sans text-display text-primary tablet:gap-16">
         <div className="relative flex w-[100%] items-center justify-center">
           <Image
-            src="https://ksapkpyzblzmnusrhtxk.supabase.co/storage/v1/object/public/ASSETS/product-image-1.jpg"
-            alt={"Main Image"}
+            src="https://ksapkpyzblzmnusrhtxk.supabase.co/storage/v1/object/public/ASSETS/landing-1.jpg"
+            alt={"Image of a coffee cup"}
             width={0}
             height={0}
             sizes="100vw"
             style={{ width: "100%", height: "500px", objectFit: "cover", opacity: "40%" }}
             className="rounded-lg"
+            priority
           />
           <div className="absolute left-0 top-0 flex h-full w-full flex-col items-center justify-center rounded-lg bg-black bg-opacity-50 p-4">
             <h1 className="text-center text-h1 text-peach drop-shadow-lg">The Brown Bean Coffee</h1>
@@ -85,7 +86,7 @@ const Home: NextPage = () => {
           <h2 className="text-h1">Who we are</h2>
           <div className="flex flex-col gap-4 tablet:flex-row">
             <div className="flex flex-col gap-4">
-              <h5 className="text-h5">Our Story and Mission</h5>
+              <h3 className="text-h5">Our Story</h3>
               <p className="text-tiny">
                 Welcome to The Brown Bean Coffee, where we create unforgettable experiences through delectable food and a welcoming
                 ambiance. Since 2012, we have dedicated ourselves to serving the finest coffee and a diverse range of coffee varieties that
@@ -100,29 +101,31 @@ const Home: NextPage = () => {
               </p>
             </div>
             <Image
-              src="https://ksapkpyzblzmnusrhtxk.supabase.co/storage/v1/object/public/ASSETS/product-image-1.jpg"
-              alt={"Main Image"}
+              src="https://ksapkpyzblzmnusrhtxk.supabase.co/storage/v1/object/public/ASSETS/landing-2.jpg"
+              alt={"Image of a coffee cup with a flower"}
               width={0}
               height={0}
               sizes="100vh"
               className="max-h-[340px] w-full rounded-lg tablet:max-h-[340px] tablet:w-auto tablet:max-w-[362px] desktop:max-h-[260px] desktop:max-w-[489px]"
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              priority
             />
           </div>
         </div>
         <div>
           <div className="flex flex-col-reverse gap-4 tablet:flex-row">
             <Image
-              src="https://ksapkpyzblzmnusrhtxk.supabase.co/storage/v1/object/public/ASSETS/product-image-1.jpg"
-              alt={"Main Image"}
+              src="https://ksapkpyzblzmnusrhtxk.supabase.co/storage/v1/object/public/ASSETS/landing-3.jpg"
+              alt={"Image of a juice jar"}
               width={0}
               height={0}
               sizes="100vh"
               className="max-h-[340px] w-full rounded-lg tablet:max-h-[340px] tablet:w-auto tablet:max-w-[362px] desktop:max-h-[260px] desktop:max-w-[489px]"
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              priority
             />
             <div className="flex flex-col gap-4">
-              <h5 className="text-h5">Our Story and Mission</h5>
+              <h3 className="text-h5">Our Mission</h3>
               <p className="text-tiny">
                 Our commitment to excellence extends beyond coffee. Our carefully curated menu features a wide range of culinary delights,
                 including hearty English breakfasts, mouthwatering burgers, nutritious salads, nourishing soups, and delightful submarines.
@@ -140,7 +143,7 @@ const Home: NextPage = () => {
         {categories ? (
           <div className="w-full">
             <h2 className="text-h1">Menu</h2>
-            <h5 className="text-h5">Discover Our Delights</h5>
+            <h3 className="text-h5">Discover Our Delights</h3>
             <div className="mt-4">
               <div className="desktop:grid-row-2 tablet:grid-row-4 hidden gap-2 tablet:grid tablet:grid-cols-3 desktop:grid-flow-row desktop:grid-cols-5">
                 {categories.map((category, index) => (
@@ -160,8 +163,8 @@ const Home: NextPage = () => {
           <Loader />
         )}
         <div className="w-full">
-          <h2 className="text-h1">Testimonials</h2>
-          <h5 className="text-h5">Words from Our Satisfied Customers</h5>
+          <h2 className="truncate text-h1">Testimonials</h2>
+          <h3 className="text-h5">Words from Our Satisfied Customers</h3>
           <div className="mt-4">
             <div className="desktop:grid-row-2 tablet:grid-row-4 grid gap-2 tablet:grid tablet:grid-cols-2">
               {TESTIMONIALS.map((testimonial, index) => (

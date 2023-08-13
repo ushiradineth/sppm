@@ -123,7 +123,7 @@ const ProductCard = ({ product, last }: { product: Product; last: boolean }) => 
           <p className="text-h5 drop-shadow-lg">{product.name}</p>
           <p className="text-label font-normal drop-shadow-lg">{product.description}</p>
         </div>
-        <p className="ml-auto text-h5 drop-shadow-lg">LKR {product.price}</p>
+        <p className="ml-auto pl-4 text-h5 drop-shadow-lg">LKR {product.price}</p>
       </div>
     </Link>
   );

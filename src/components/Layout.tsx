@@ -235,7 +235,7 @@ function NavSheet() {
 
   return (
     <Sheet open={openSheet} onOpenChange={(open) => setOpenSheet(open)}>
-      <SheetTrigger className="ml-auto mr-2 block tablet:hidden">
+      <SheetTrigger name="Hamburger menu icon" className="ml-auto mr-2 block tablet:hidden">
         <Menu />
       </SheetTrigger>
       <SheetContent className="mt-14 bg-peach">

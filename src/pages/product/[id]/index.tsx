@@ -1,6 +1,6 @@
 import { type Product } from "@prisma/client";
 import { CheckCircle2, ShoppingCart } from "lucide-react";
-import { getSession } from "next-auth/react";
+import { getSession, useSession } from "next-auth/react";
 import { toast } from "react-toastify";
 
 import { useState } from "react";
@@ -50,6 +50,7 @@ interface pageProps {
 
 export default function ProductPage({ product, InCart }: pageProps) {
   const router = useRouter();
+  const { status } = useSession();
   const [quantity, setQuantity] = useState(0);
 
   const { mutate: Checkout, isLoading: CheckingOut } = api.cart.create.useMutation({
@@ -70,15 +71,16 @@ export default function ProductPage({ product, InCart }: pageProps) {
       <Head>
         <title>{product.name} - The Brown Bean Coffee</title>
       </Head>
-      <main className="grid max-w-[1024px] grid-flow-row grid-rows-2 items-start justify-center gap-4 p-4 text-primary tablet:grid-cols-2 tablet:grid-rows-none">
-        <div>
+      <main className="flex max-w-[1024px] flex-col items-start justify-center gap-4 p-4 text-primary tablet:grid tablet:grid-cols-2 tablet:grid-rows-none">
+        <div className="relative flex w-[100%] items-center justify-center">
           <Image
             src={`${env.NEXT_PUBLIC_SUPABASE_URL}/${env.NEXT_PUBLIC_PRODUCT_IMAGE_BUCKET}/${product.id}/0.jpg`}
             alt={`${product.name} image`}
-            width={1000}
-            height={1000}
+            width={0}
+            height={0}
+            sizes="100vw"
             style={{ objectFit: "cover" }}
-            className="h-[343px] w-full rounded-lg tablet:h-[700px]"
+            className="h-auto w-full rounded-lg tablet:h-[700px]"
           />
         </div>
         <div className="flex h-full flex-col gap-8">
@@ -118,10 +120,16 @@ export default function ProductPage({ product, InCart }: pageProps) {
                 </Link>
               ) : (
                 <>
-                  <Button disabled={quantity === 0} onClick={() => Checkout({ productId: product.id, quantity })} loading={CheckingOut}>
+                  <Button
+                    disabled={quantity === 0 || status !== "authenticated"}
+                    onClick={() => Checkout({ productId: product.id, quantity })}
+                    loading={CheckingOut}>
                     <CheckCircle2 strokeWidth={3} className="mr-2 h-4 w-4" /> Checkout
                   </Button>
-                  <Button disabled={quantity === 0} onClick={() => AddToCart({ productId: product.id, quantity })} loading={AddingToCart}>
+                  <Button
+                    disabled={quantity === 0 || status !== "authenticated"}
+                    onClick={() => AddToCart({ productId: product.id, quantity })}
+                    loading={AddingToCart}>
                     <ShoppingCart strokeWidth={3} className="mr-2 h-4 w-4" /> Add to cart
                   </Button>
                 </>

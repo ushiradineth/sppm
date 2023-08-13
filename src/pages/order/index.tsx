@@ -168,7 +168,7 @@ export default function Index({ orders: serverOrders, count, total }: pageProps)
                   })
                 ) : (
                   <TableRow>
-                    <TableCell colSpan={4} className="h-24 text-center">
+                    <TableCell colSpan={5} className="h-24 text-center">
                       No results.
                     </TableCell>
                   </TableRow>
