@@ -73,7 +73,7 @@ export default function Carousel({ children, autoScroll, navButtons, indicators,
           className="group absolute left-0 top-0 z-30 hidden h-full cursor-pointer items-center justify-center px-4 focus:outline-none group-hover:flex">
           <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gray-300/30 group-hover:bg-gray-300/60 group-focus:outline-none group-focus:ring-4 group-focus:ring-gray-300/70">
             <svg className="h-4 w-4 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4" />
+              <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 1 1 5l4 4" />
             </svg>
             <span className="sr-only">Previous</span>
           </span>
@@ -84,7 +84,7 @@ export default function Carousel({ children, autoScroll, navButtons, indicators,
           className="group absolute right-0 top-0 z-30 hidden h-full cursor-pointer items-center justify-center px-4 focus:outline-none group-hover:flex">
           <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gray-300/10 group-hover:bg-gray-300/60 group-focus:outline-none group-focus:ring-4 group-focus:ring-gray-300/70">
             <svg className="h-4 w-4 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
+              <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4" />
             </svg>
             <span className="sr-only">Next</span>
           </span>
