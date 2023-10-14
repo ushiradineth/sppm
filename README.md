@@ -16,7 +16,7 @@ Coffee Shop is an e-commerce website for a local furniture store or coffee shop.
 - React Hook Forms
 - PostgreSQL
 - UI Primitives by [Shadcn](https://ui.shadcn.com/)
-- [Jira](https://ushiradineth.atlassian.net/jira/software/projects/SPPM/boards/2)
+- [Figma](https://www.figma.com/file/hWF8Uodvje7unGXsTU6yAR/sppm?type=design&node-id=0%3A1&mode=design&t=YQAZ0W1fFQUDD2VS-1)
 
 ## Hosting
 
