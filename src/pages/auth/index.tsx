@@ -52,7 +52,7 @@ export default function Auth() {
   return (
     <>
       <Head>
-        <title>Authentication - The Brown Bean Coffee</title>
+        <title>Authentication - The Coffee Shop</title>
       </Head>
       <main className="flex h-screen flex-col items-center justify-center">
         <Link href="/" className="absolute left-12 top-12 rounded-full border p-4 hover:bg-peach-dark-2">

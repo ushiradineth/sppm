@@ -69,7 +69,7 @@ export default function ProductPage({ product, InCart }: pageProps) {
   return (
     <>
       <Head>
-        <title>{product.name} - The Brown Bean Coffee</title>
+        <title>{product.name} - The Coffee Shop</title>
       </Head>
       <main className="flex max-w-[1024px] flex-col items-start justify-center gap-4 p-4 text-primary tablet:grid tablet:grid-cols-2 tablet:grid-rows-none">
         <div className="relative flex w-[100%] items-center justify-center">

@@ -19,12 +19,12 @@ import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Button } from "./ui/button";
 import { Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarSeparator, MenubarTrigger } from "./ui/menubar";
 import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
+    NavigationMenu,
+    NavigationMenuContent,
+    NavigationMenuItem,
+    NavigationMenuList,
+    NavigationMenuTrigger,
+    navigationMenuTriggerStyle,
 } from "./ui/navigation-menu";
 import { Separator } from "./ui/separator";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
@@ -53,7 +53,7 @@ function Layout(props: { children: React.ReactNode }) {
         }`}>
         <Link href={"/"} className="mx-2 flex items-center justify-center gap-2">
           <Image src={icon} alt="Brand Logo" width={40} />
-          <h1 className="text-h5 tablet:block">The Brown Bean Coffee</h1>
+          <h1 className="text-h5 tablet:block">The Coffee Shop</h1>
         </Link>
         <div className="ml-auto hidden items-center gap-4 tablet:flex">
           <NavItems />

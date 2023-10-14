@@ -14,7 +14,7 @@ export default function Location() {
           className="rounded-lg"
         />
         <div className="absolute left-0 top-0 flex h-full w-full flex-col items-center justify-center rounded-lg bg-black bg-opacity-50 p-4">
-          <h1 className="text-center text-h1 text-peach drop-shadow-lg">The Brown Bean Coffee</h1>
+          <h1 className="text-center text-h1 text-peach drop-shadow-lg">The Coffee Shop</h1>
           <h2 className="text-center text-h5 text-peach drop-shadow-lg">
             No 104, Srimath Anagarika Dharmapala Mawatha, Colombo 00700, Sri Lanka
           </h2>

@@ -58,7 +58,7 @@ export default function Menu({ categories }: Props) {
   return (
     <>
       <Head>
-        <title>Menu - The Brown Bean Coffee</title>
+        <title>Menu - The Coffee Shop</title>
       </Head>
       <main className="flex w-full max-w-[1024px] flex-col items-center justify-center gap-12 bg-peach p-4 font-sans text-display text-primary tablet:gap-16">
         <div className="relative flex w-[100%] items-center justify-center">

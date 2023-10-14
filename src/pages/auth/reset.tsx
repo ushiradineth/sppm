@@ -51,7 +51,7 @@ export default function Auth() {
   return (
     <>
       <Head>
-        <title>Reset Password - The Brown Bean Coffee</title>
+        <title>Reset Password - The Coffee Shop</title>
       </Head>
       <main className="flex flex-col items-center justify-center">
         <Link href="/" className="absolute left-12 top-12 rounded-full border p-4 hover:bg-peach-dark-2">

@@ -87,7 +87,7 @@ export const userRouter = createTRPCRouter({
         const mailOptions = {
           from: env.GMAIL_ADDRESS,
           to: input.email,
-          subject: "One Time Password by The Brown Bean Coffee",
+          subject: "One Time Password by The Coffee Shop",
           text: `You have requested for a One Time Password. Your OTP is ${OTP}, if this was not requested by you, contact us through this mail. Thank you!`,
         };
 

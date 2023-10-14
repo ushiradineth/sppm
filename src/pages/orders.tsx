@@ -59,7 +59,7 @@ export default function Orders({ orders }: Props) {
   return (
     <>
       <Head>
-        <title>Orders - The Brown Bean Coffee</title>
+        <title>Orders - The Coffee Shop</title>
       </Head>
       <main className="flex w-full max-w-[1024px] flex-col items-center justify-center gap-12 bg-peach p-4 font-sans text-display text-primary tablet:gap-16">
         <Accordion type="single" collapsible className="relative w-full">

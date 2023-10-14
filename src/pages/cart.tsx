@@ -92,7 +92,7 @@ export default function Cart({ cart: serverCart }: Props) {
   return (
     <>
       <Head>
-        <title>Cart - The Brown Bean Coffee</title>
+        <title>Cart - The Coffee Shop</title>
       </Head>
       <main className="flex w-full max-w-[1024px] flex-col items-center justify-center gap-12 bg-peach p-4 font-sans text-display text-primary tablet:gap-16">
         <div className="flex w-[100%] flex-col items-start justify-start gap-4">

@@ -78,7 +78,7 @@ const Home: NextPage = () => {
             priority
           />
           <div className="absolute left-0 top-0 flex h-full w-full flex-col items-center justify-center rounded-lg bg-black bg-opacity-50 p-4">
-            <h1 className="text-center text-h1 text-peach drop-shadow-lg">The Brown Bean Coffee</h1>
+            <h1 className="text-center text-h1 text-peach drop-shadow-lg">The Coffee Shop</h1>
             <h2 className="text-center text-h5 text-peach drop-shadow-lg">Serving the Best Coffee and Delightful Food Since 2012</h2>
           </div>
         </div>
@@ -88,9 +88,9 @@ const Home: NextPage = () => {
             <div className="flex flex-col gap-4">
               <h3 className="text-h5">Our Story</h3>
               <p className="text-tiny">
-                Welcome to The Brown Bean Coffee, where we create unforgettable experiences through delectable food and a welcoming
+                Welcome to The Coffee Shop, where we create unforgettable experiences through delectable food and a welcoming
                 ambiance. Since 2012, we have dedicated ourselves to serving the finest coffee and a diverse range of coffee varieties that
-                will tantalise your taste buds. At The Brown Bean Coffee, we believe that good food is an art that goes beyond mere
+                will tantalise your taste buds. At The Coffee Shop, we believe that good food is an art that goes beyond mere
                 sustenance. Our talented chefs and baristas work tirelessly to craft dishes and brews that not only taste exceptional but
                 also please the eye.
               </p>
@@ -132,8 +132,8 @@ const Home: NextPage = () => {
                 Each dish is crafted with the finest ingredients and infused with flavors that will leave you craving for more.
               </p>
               <p className="text-tiny">
-                The Brown Bean Coffee offers more than just great food. Our cozy and comfortable ambiance provides the perfect space to
-                unwind, whether you&apos;re meeting friends, catching up on work, or seeking a moment of solace. Join us at The Brown Bean
+                The Coffee Shop offers more than just great food. Our cozy and comfortable ambiance provides the perfect space to
+                unwind, whether you&apos;re meeting friends, catching up on work, or seeking a moment of solace. Join us at The Coffee Shop
                 Coffee and indulge in our passion for exceptional food and a warm atmosphere. Experience the best coffee and coffee
                 varieties in Sri Lanka since 2012.
               </p>
